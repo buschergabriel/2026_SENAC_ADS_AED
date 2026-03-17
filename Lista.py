@@ -1,6 +1,6 @@
 from No import No
 
-class Lista: # Por convenção, usamos inicial maiúscula para classes
+class Lista: 
     
     def __init__(self):
         self.inicio = None
@@ -13,7 +13,7 @@ class Lista: # Por convenção, usamos inicial maiúscula para classes
             self.inicio = nodo
         
         else:
-            # Caso 2: Inserção no início (O erro estava aqui: compare com self.inicio.dado)
+            # Caso 2: Inserção no início (O novo valor é menor que o atual início)
             if nodo.dado < self.inicio.dado:
                 nodo.prox = self.inicio
                 self.inicio = nodo
@@ -38,6 +38,8 @@ class Lista: # Por convenção, usamos inicial maiúscula para classes
                 if not inseriu:
                     ant.prox = nodo
         
+        # Mensagem de confirmação solicitada:
+        print(f"+++ Elemento '{valor}' adicionado à lista +++")
         self.imprimir()
 
     def imprimir(self):
@@ -52,3 +54,34 @@ class Lista: # Por convenção, usamos inicial maiúscula para classes
             print(f"-> {aux.dado}")
             aux = aux.prox
         print("-" * 10)
+
+    def remover(self, valor):
+            removeu = False 
+            
+            if self.inicio is None:
+                print("Lista vazia")
+            else:
+                # Caso 1: Remover o primeiro elemento
+                if valor == self.inicio.dado:
+                    self.inicio = self.inicio.prox
+                    removeu = True
+                else:
+                    # Caso 2: Procurar no restante da lista
+                    ant = self.inicio
+                    aux = self.inicio.prox
+                    
+                    while aux:
+                        if valor == aux.dado:
+                            ant.prox = aux.prox
+                            removeu = True
+                            break 
+                        else:
+                            ant = aux
+                            aux = aux.prox
+                
+                if removeu:
+                    print(f"--- Elemento {valor} removido! ---")
+                else:
+                    print(f"--- {valor} não encontrado ---")
+                
+                self.imprimir()
