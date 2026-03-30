@@ -1,0 +1,21 @@
+# Compilados
+*.o
+*.out
+*.exe
+*.a
+*.so
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Temporários
+*.tmp
+*.bak
